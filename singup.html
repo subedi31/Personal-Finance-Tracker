@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Personal Expenses Tracker</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="signup.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        
+        <form onsubmit="validateSingupForm()">
+            <div class="form-group">
+                <label for="Fullname">Full Name:</label>
+                <input type="text" id="Fullname" name="Fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="Email" id="Email" name="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+            Already have an account? <a href="login.html">Login here</a>
+        </form>
+       
+    </div>
+</body>
+</html>
