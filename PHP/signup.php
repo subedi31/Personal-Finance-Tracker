@@ -8,15 +8,10 @@
     $email = $_POST['email'];       
     $password = $_POST['password'];
 
-    // Check email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        die("Invalid email format.");
-    }
-
     $servername = "localhost";
     $username = "root";
     $db_password = "";
-    $dbname = "sahayata";
+    $dbname = "personalfinance";
 
     $conn = new mysqli($servername, $username, $db_password, $dbname);
 
