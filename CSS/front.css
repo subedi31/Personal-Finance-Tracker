@@ -1,30 +1,44 @@
-body{
-    padding: 30px;
-    text-align: left;
-    background-color: rgb(38, 19, 162);   
+body {
+      
+    background-image: url("https://cdn.tatlerasia.com/tatlerasia/i/2022/11/21104736-gettyimages-1188438273_cover_1500x1050.jpg");
+}
+h3 {
+   color: yellow;
+   font-family:'Times New Roman';
+   font-size: 40px;
+   font-weight: 900;
    
 }
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    margin: auto;
+h4 {
+   color: black;
+   font-family:cursive;
+   font-size: 20px;
+ padding-left: 85px;
+   
+  
 }
-h2{
-    color: rgb(255, 255, 255);
-    font-style: oblique;
-    font-weight: bolder;
-    font-size: 30px;
+div {
+   text-align: left;
+   padding-left: 100px;
+   line-height: 10px;
 }
-h3{
-    color: rgb(218, 218, 221);
-    font-style: initial;
-    font-size: 20px;
+img {
+   height: 250px;
+   width: 250px;
+   padding: 50px 0px 0px 190px;
 }
-button{
-    padding: 9px;
-    background-color: rgb(218, 179, 25);
-    cursor:pointer;
-    border-radius: 10px;
+a {
+   color: black;
+   background: fixed;
+   text-decoration: none;
+   
+}
+#my-id {
+   padding: 10px 200px 0px 250px;
+   font-size: 30px;   
+}
+#arrow {
+   height: 60px;
+   width: 60px;
+   padding: 0px 0px 0px 280px ;
 }
