@@ -1,44 +1,45 @@
 <?php
-    // Validate inputs
-    if (empty($_POST['fullname']) || empty($_POST['email']) || empty($_POST['password'])) {
-        die("All fields are required.");
-    }
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "personalfinance";
 
-    $fullname = $_POST['fullname'];  
-    $email = $_POST['email'];       
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $_POST['fullname'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $servername = "localhost";
-    $username = "root";
-    $db_password = "";
-    $dbname = "personalfinance";
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $conn = new mysqli($servername, $username, $db_password, $dbname);
+    // Check if email already exists
+    $sql_check = "SELECT email FROM users WHERE email='$email'";
+    $result_check = $conn->query($sql_check);
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-
-    // Prepare and bind
-    $stmt = $conn->prepare("INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)");
-    if ($stmt === false) {
-        die("Prepare failed: " . $conn->error);
-    }
-    
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $stmt->bind_param("sss", $fullname, $email, $hashedPassword);
-
-    // Execute and check for errors
-    if ($stmt->execute()) {
-        echo "Signup Successful";
-        // Optionally redirect to a different page
-        // header("Location: success.php");
-        // exit();
+    if ($result_check->num_rows > 0) {
+        // Email already exists
+        echo "Email already exists. Please login.";
     } else {
-        echo "Error: " . $stmt->error;
-    }
+        // Insert data into the database
+        $sql = "INSERT INTO users (fullname, email, password) VALUES ('$fullname', '$email', '$hashed_password')";
 
-    $stmt->close();
-    $conn->close();
+        if ($conn->query($sql) === TRUE) {
+            echo "Signup successful!";
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+    }
+}
+
+$conn->close();
 ?>
 
