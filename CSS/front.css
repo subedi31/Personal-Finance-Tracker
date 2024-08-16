@@ -1,0 +1,30 @@
+body{
+    padding: 30px;
+    text-align: left;
+    background-color: rgb(38, 19, 162);   
+   
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin: auto;
+}
+h2{
+    color: rgb(255, 255, 255);
+    font-style: oblique;
+    font-weight: bolder;
+    font-size: 30px;
+}
+h3{
+    color: rgb(218, 218, 221);
+    font-style: initial;
+    font-size: 20px;
+}
+button{
+    padding: 9px;
+    background-color: rgb(218, 179, 25);
+    cursor:pointer;
+    border-radius: 10px;
+}
