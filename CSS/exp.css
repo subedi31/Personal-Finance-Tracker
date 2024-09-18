@@ -1,0 +1,49 @@
+
+#main{
+    height: 200px;
+    width: 400px;
+    border: 2px solid black;
+    background-color: goldenrod;
+    
+}
+h2{
+    text-decoration: underline;
+    text-align: center;
+}
+
+.one {
+    border: 1px solid black;
+    border-radius: 10px;
+    
+}
+ .two{
+    border: 1px solid black;
+    border-radius: 10px;
+
+ }
+
+ .three{
+    border: 1px solid black;
+    border-radius: 10px;
+    
+ }
+
+
+ button{
+    text-align: center;
+    border-radius: 20px;
+    border-color: black;
+ }
+  #but {
+    display: flex;
+
+    justify-content: space-evenly;
+  }
+
+
+
+
+
+
+
+

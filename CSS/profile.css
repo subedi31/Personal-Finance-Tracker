@@ -1,0 +1,37 @@
+img {
+    height: 200px;
+    width: 200px;
+}
+#main{
+ display: flex;
+    border: 2px solid black;
+    height: 500px;
+    width: 400px;
+    background-color: goldenrod;
+    justify-content: center;
+}
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+#link{
+   display: flex;
+   justify-content: space-around;
+}
+
+#one{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+#two{
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
