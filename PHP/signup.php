@@ -18,6 +18,8 @@ $errors = [];
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = trim($_POST['fullname']);
+    $phone_no = trim($_POST['phone_no']);
+    $address = trim($_POST['address']);
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $confirmpass = $_POST['confirm-password'];
@@ -26,22 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z\s'-]+$/", $fullname)) {
         $errors[] = "Name is not valid! It must not contain numbers or special characters.";
     }
-    
-
+    // validate phone_no
+    if (!preg_match('/^[0-9]{10}$/', $phone_no)) {
+        $errors[] = "Phone number is not valid";
+    }
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format.";
     }
 
     // Validate password
-    if (mb_strlen($password) <= 8) {
+    if (mb_strlen($password) < 8) {
         $errors[] = "Your Password Must Contain At Least 8 Characters!";
-    } elseif (!preg_match("#[0-9]+#", $password)) {
-        $errors[] = "Your Password Must Contain At Least 1 Number!";
     } elseif (!preg_match("#[A-Z]+#", $password)) {
         $errors[] = "Your Password Must Contain At Least 1 Capital Letter!";
-    } elseif (!preg_match("#[a-z]+#", $password)) {
-        $errors[] = "Your Password Must Contain At Least 1 Lowercase Letter!";
     } elseif (!preg_match("#[\W]+#", $password)) {
         $errors[] = "Your Password Must Contain At Least 1 Special Character!";
     } elseif ($password !== $confirmpass) {
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if email already exists
     if (empty($errors)) {
-        $stmt = $conn->prepare("SELECT email FROM users WHERE email=?");
+        $stmt = $conn->prepare("SELECT email FROM user WHERE email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -62,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Insert data into the database
-            $stmt = $conn->prepare("INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)");
-            $stmt->bind_param("sss", $fullname, $email, $hashed_password);
+            $stmt = $conn->prepare("INSERT INTO user (fullname, email, password, phone_no, address) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $fullname, $email, $hashed_password, $phone_no, $address );
 
             if ($stmt->execute()) {
                 echo "Signup successful!";
