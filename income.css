@@ -1,0 +1,60 @@
+
+a{
+    text-decoration: none;
+    color: black;
+}
+   
+
+#forall {
+    display: flex;
+    height: 20px;
+    width: 500px;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+#in {
+    height: 20px;
+    width: 100px;
+    background-color: bisque;
+    border-radius: 20px;
+    
+
+}
+
+#ex {
+    height: 20px;
+    width: 100px;
+    background-color: bisque;
+    border-radius: 20px;
+    
+
+}
+
+#summ {
+    height: 20px;
+    width: 100px;
+    background-color: bisque;
+    border-radius: 20px;
+
+}
+
+#main{
+    background-color: goldenrod;
+    border: 2px solid black;
+    height: 350px;
+    width: 500px;
+}
+h1{
+    text-align: center;
+    text-decoration: underline;
+} 
+img {
+    height: 40px;
+    width: 40px;
+    background-color: goldenrod;
+    
+}
+
+
+
