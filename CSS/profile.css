@@ -73,3 +73,11 @@ body{
     border-radius: 40px;
     opacity: 1;
    }
+
+   #one:hover {
+    background-color:  goldenrod;
+   }
+
+   #two:hover {
+    background-color:  goldenrod;
+   }

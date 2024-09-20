@@ -31,6 +31,8 @@ a {
    color: black;
    background: fixed;
    text-decoration: none;
+   border-radius: 30px;
+   
    
 }
 #my-id {
@@ -41,4 +43,8 @@ a {
    height: 60px;
    width: 60px;
    padding: 0px 0px 0px 280px ;
+}
+a:hover {
+   background-color: goldenrod;
+   
 }
