@@ -1,0 +1,64 @@
+body {
+    background-color:  goldenrod;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+ #login{
+  background-color: skyblue;
+    height: 400px;
+    width: 400px;
+    border: 2px solid white;
+    border-radius: 40px;
+ }
+  h1{
+    text-align: center;
+  }
+  #but{
+    display: flex;
+    justify-content: center;
+    
+  }
+  .btn {
+    height: 30px;
+    width: 100px;
+    border: 2px solid white;
+    border-radius:  30px;
+  }
+  #username {
+    text-align: center;
+  }
+
+  #word {
+    text-align: center;
+  }
+
+  #password {
+    text-align: center;
+  }
+
+  #name {
+    text-align: center;
+  }
+  .user {
+    text-align: center;
+    height: 20px;
+    width: 250px;
+    border: 2px solid white;
+    border-radius: 30px;
+  }
+   .user:hover {
+    background-color: burlywood;
+   }
+   .btn:hover {
+    background-color: burlywood;
+   }
+
+   #create {
+    display: flex;
+    justify-content: center;
+    
+   }
+
+   

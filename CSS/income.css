@@ -62,10 +62,24 @@ body {
     background-color: goldenrod;
     display: flex;
     justify-content: center;
-    
-    
+}
+ 
+#in:hover {
+    background-color:  goldenrod;
 
-} 
+}
+
+#ex:hover {
+    background-color:  goldenrod;
+
+}
+
+#summ:hover {
+    background-color:  goldenrod;
+
+}
+
+
 
 
 
