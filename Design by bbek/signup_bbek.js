@@ -45,7 +45,7 @@ else if (!regex.test(password))
     return false;
 }
  
-else if (password>8)
+else if (password.length < 8)
     {
       alert("Password must contain 8 letters.");
       return false;
