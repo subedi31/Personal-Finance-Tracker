@@ -3,16 +3,18 @@
     <head>
         <title> SignUp page </title>
         <link rel="stylesheet" href="signup_bbek.css">
+        
     </head>
     <body>
+      <script src="signup_bbek.js"></script>
         <div id="form">
-            <form>
+            <form onsubmit="return data()" action="sucess.html">
                <h1> Sign Up </h1>
                <div id="one">
                   Full Name:
                </div>
                <div id="one">
-                  <input type="text" class="abc" placeholder="Enter your full name">
+                  <input type="text" id="name" class="abc" placeholder="Enter your full name">
                </div>
                <br>
 
@@ -20,7 +22,7 @@
                   Address:
                </div>
                <div id="one">
-                  <input type="text" class="abc" placeholder="Enter your address">
+                  <input type="text" id="add" class="abc" placeholder="Enter your address">
                </div>
                <br>
 
@@ -28,7 +30,7 @@
                   Email:
                </div>
                <div id="one">
-                  <input type="email" class="abc" placeholder="Enter your email id">
+                  <input type="email" id="email" class="abc" placeholder="Enter your email id">
                </div>
                <br>
 
@@ -36,7 +38,7 @@
                    Phone Number:
                </div>
                <div id="one">
-                  <input type="tel" class="abc" placeholder="Enter your number">
+                  <input type="tel" id="phone" class="abc" placeholder="Enter your number">
                </div>
                <br>
 
@@ -44,7 +46,7 @@
                   Password:
                </div>
                <div id="one">
-                  <input type="password" class="abc" placeholder="Enter your password">
+                  <input type="password" id="pass" class="abc" placeholder="Enter your password">
                </div>
                <br>
 
@@ -52,12 +54,12 @@
                   Confirm Password:
                </div>
                <div id="one">
-                  <input type="password" class="abc" placeholder="Confirm your password">
+                  <input type="password" id="confpass" class="abc" placeholder="Confirm your password">
                </div>
                <br>
 
                <div id="btn">
-                  <button type="submit" class="but"> Sign Up </button>
+                  <input type="submit" class="but" value="Sign Up">
                </div>
                <br>
 
