@@ -44,6 +44,12 @@ else if (!regex.test(password))
     alert("Password must be same.");
     return false;
 }
+ 
+else if (password>8)
+    {
+      alert("Password must contain 8 letters.");
+      return false;
+  }
 
 else if(!isNaN(nam))
     {
