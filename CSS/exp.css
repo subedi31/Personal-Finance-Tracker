@@ -51,6 +51,16 @@ h2{
     background-color:  goldenrod;
    }
 
+   #arrow {
+    height: 30px;
+    width: 30px;
+    padding-right: 50px;
+  }
+
+  table {
+   padding-left: 80px;
+  }
+
 
 
 
