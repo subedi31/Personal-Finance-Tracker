@@ -45,7 +45,7 @@ a{
     background-color: skyblue;
     border: 2px solid white;
     border-radius: 40px;
-    height: 500px;
+    height: 520px;
     width: 700px;
 }
 h1{
@@ -80,42 +80,18 @@ body {
 }
 
 #dots {
-    padding-left: 330px;
-    
+height: 20px;
+width: 20px;
+padding-left: 10px;
+}
+
+#button {
+    background-color: skyblue ;
+    border: none;
+    border-radius: 20px;
 }
  
- #update {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    padding-top: 50px;
- }
-
-#edit {
-    height: 25px;
-    width: 100px;
-    background-color: bisque;
-    border-radius: 20px;
+#button:hover {
+    background-color: goldenrod;
 }
-
-#del {
-    height: 25px;
-    width: 100px;
-    background-color: bisque;
-    border-radius: 20px;
-}
-
-#edit:hover {
-    background-color:  goldenrod;
-
-}
-
-#del:hover {
-    background-color:  goldenrod;
-
-}
-
-
-
-
 
