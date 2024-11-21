@@ -79,6 +79,41 @@ body {
 
 }
 
+#dots {
+    padding-left: 330px;
+    
+}
+ 
+ #update {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding-top: 50px;
+ }
+
+#edit {
+    height: 25px;
+    width: 100px;
+    background-color: bisque;
+    border-radius: 20px;
+}
+
+#del {
+    height: 25px;
+    width: 100px;
+    background-color: bisque;
+    border-radius: 20px;
+}
+
+#edit:hover {
+    background-color:  goldenrod;
+
+}
+
+#del:hover {
+    background-color:  goldenrod;
+
+}
 
 
 
