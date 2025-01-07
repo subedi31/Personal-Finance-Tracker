@@ -1,51 +1,145 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> Add Income </title>
-        <link rel="stylesheet" href="CSS/inc.css">
-    </head>
-    <body>
-        <div id="main">
-            
-            <h2> <a href="income.html"> <img src="arrow.png" id="arrow"> </a> Add Your Income Here </h2>
-               <table>
-                <div >
-                    <tr>
-                        <td> Date: </td>
-                        <td id="date"><input type="date" class="one" placeholder=""></td>
-                    </tr>
-                </div>
+<head>
+    <title> Add Income </title>
+    <link rel="stylesheet" href="CSS/inc.css">
+    <script>
+        // Function to validate the date range
+        function validateDate() {
+            var today = new Date();
+            var minDate = new Date(today.getFullYear() - 5, today.getMonth(), today.getDate()); // 5 years ago
+            var maxDate = today; // Current date
 
-                <div>
-                    <tr>
-                        <td> Category: </td>
-                        <td id="cat"><select name="Category" class="two">
+            var dateInput = document.getElementById('dateInput');
+
+            // Format the dates as YYYY-MM-DD
+            var minDateString = minDate.toISOString().split('T')[0];
+            var maxDateString = maxDate.toISOString().split('T')[0];
+
+            // Set the valid date range
+            dateInput.setAttribute('min', minDateString);
+            dateInput.setAttribute('max', maxDateString);
+        }
+
+        // Function to validate the amount field
+        function validateAmount() {
+            var amountInput = document.getElementById('amountInput');
+            var amount = parseFloat(amountInput.value);
+
+            if (amount < 0) {
+                alert("Amount cannot be negative.");
+                amountInput.focus();
+                return false; // Prevent form submission if amount is negative
+            }
+            return true; // Allow form submission if the amount is valid
+        }
+
+        // Function to check if any field is empty
+        function checkEmptyFields() {
+            var dateInput = document.getElementById('dateInput');
+            var categoryInput = document.getElementsByName('Category')[0];
+            var amountInput = document.getElementById('amountInput');
+
+            if (dateInput.value === "" || categoryInput.value === "" || amountInput.value === "") {
+                alert("Please fill in all fields.");
+                return false; // Prevent form submission if any field is empty
+            }
+            return true; // Allow form submission if all fields are filled
+        }
+
+        // Function to validate the custom category if "Other" is selected
+        function validateCustomCategory() {
+            var categorySelect = document.getElementsByName('Category')[0];
+            var customCategoryInput = document.getElementById('customCategoryInput');
+
+            // If "Other" is selected and the input field is blank
+            if (categorySelect.value === 'Other' && customCategoryInput && customCategoryInput.value === "") {
+                alert("Please enter a custom category.");
+                customCategoryInput.focus();
+                return false; // Prevent form submission if custom category is blank
+            }
+            return true; // Allow form submission if custom category is valid
+        }
+
+        // Function to validate the form before submission
+        function validateForm(event) {
+            if (!checkEmptyFields() || !validateAmount() || !validateCustomCategory()) {
+                event.preventDefault(); // Prevent form submission if any validation fails
+            }
+        }
+
+        // Function to handle category change and show input field for "Other"
+        function handleCategoryChange() {
+            var categorySelect = document.getElementsByName('Category')[0];
+            var customCategoryInput = document.getElementById('customCategoryInput');
+
+            // If "Other" is selected, show the input field
+            if (categorySelect.value === 'Other') {
+                // If the input field is not already shown, create it
+                if (!customCategoryInput) {
+                    var inputField = document.createElement('input');
+                    inputField.type = 'text';
+                    inputField.id = 'customCategoryInput';
+                    inputField.name = 'otherCategory';
+                    inputField.placeholder = 'Enter your custom category';  // Placeholder text
+                    var categoryRow = document.getElementById('cat');
+                    categoryRow.appendChild(inputField);
+                }
+            } else {
+                // Remove the input field if "Other" is not selected
+                if (customCategoryInput) {
+                    customCategoryInput.remove();
+                }
+            }
+        }
+
+        // Call the function to set the date range when the page loads
+        window.onload = function() {
+            validateDate();
+        };
+    </script>
+</head>
+<body>
+    <div id="main">
+        <h2> <a href="income.html"> <img src="arrow.png" id="arrow"> </a> Add Your Income Here </h2>
+
+        <form action="submit_income.php" method="POST" onsubmit="validateForm(event)">
+            <table>
+                <tr>
+                    <td> Date: </td>
+                    <td id="date">
+                        <!-- Add the id "dateInput" for date validation -->
+                        <input type="date" id="dateInput" name="date" class="one" placeholder="">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td> Category: </td>
+                    <td id="cat">
+                        <select name="Category" class="two" onchange="handleCategoryChange()">
                             <option value="Salary"> Salary </option>
                             <option value="Freelancing"> Freelancing </option>
-                            <option value="Intrest"> Intrest Received </option>
+                            <option value="Intrest"> Interest Received </option>
                             <option value="Business"> Business </option>
                             <option value="Other"> Other </option>
+                        </select>
+                    </td>
+                </tr>
 
-                        </select></td>
-                    </tr>
-                </div>
-
-                <div>
-                    <tr>
-                        <td> Amount: </td>
-                        <td id="amt"><input type="number" class="three" placeholder=""></td>
-                    </tr>
-                </div>
+                <tr>
+                    <td> Amount: </td>
+                    <td id="amt">
+                        <!-- Add the id "amountInput" for amount validation -->
+                        <input type="number" id="amountInput" name="amount" class="three" placeholder="">
+                    </td>
+                </tr>
             </table>
+
             <br>
-                <div id="but">
-                    
-                         <button id="sumbit"> Submit </button> 
-                         <button id="sumbit"> Cancel </button> 
-                   
-                </div>
-               
-            
-        </div>
-    </body>
+            <div id="but">
+                <button type="submit" id="submit"> Submit </button>
+                <button type="reset" id="cancel"> Cancel </button>
+            </div>
+        </form>
+    </div>
+</body>
 </html>
