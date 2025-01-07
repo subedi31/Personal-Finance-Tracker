@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="stylesheet" href="CSS/summary.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Summary</h1>
+        <div id="thedate">
+            <input type="date" id="startDate" class="dat">
+            <h4>To</h4>
+            <input type="date" id="endDate" class="dat">
+            <button type="submit" id="filter">Filter</button>
+        </div>
+
+        <div id="total">
+            <h4>Total Income</h4>
+            <h4>Total Expenditure</h4>
+            <h4>Net Profit/Loss</h4>
+        </div>
+
+        <div id="amt">
+            <input type="number" id="num" placeholder="">
+            <input type="number" id="num" placeholder="">
+            <input type="number" id="num" placeholder="">
+        </div>
+    </div>
+
+    <script>
+        // Get today's date and format it to set min and max values for the date input
+        const today = new Date();
+        const maxDate = today.toISOString().split('T')[0];  // Today's date in YYYY-MM-DD format
+        const minDate = new Date(today.setFullYear(today.getFullYear() - 5)).toISOString().split('T')[0];  // 5 years ago
+
+        // Get the date input elements
+        const startDate = document.getElementById('startDate');
+        const endDate = document.getElementById('endDate');
+        const filterButton = document.getElementById('filter');
+
+        // Set the max and min attributes for the date inputs
+        startDate.setAttribute('max', maxDate); // Set max date as today's date
+        endDate.setAttribute('max', maxDate); // Set max date as today's date
+        startDate.setAttribute('min', minDate); // Set min date as 5 years ago
+        endDate.setAttribute('min', minDate); // Set min date as 5 years ago
+
+        // Event listener for the filter button click
+        filterButton.addEventListener('click', function(event) {
+            // Check if either start date or end date is empty
+            if (!startDate.value || !endDate.value) {
+                // Show alert if any date is missing
+                alert("Please select both start and end dates.");
+                event.preventDefault(); // Prevent form submission or further action
+            }
+        });
+
+        // Optionally, you can add an event listener to handle further validations when the date changes
+        startDate.addEventListener('change', function() {
+            if (startDate.value > endDate.value && endDate.value) {
+                alert("Start date cannot be later than end date");
+                startDate.value = ''; // Reset the start date if invalid
+            }
+        });
+
+        endDate.addEventListener('change', function() {
+            if (endDate.value < startDate.value && startDate.value) {
+                alert("End date cannot be earlier than start date");
+                endDate.value = ''; // Reset the end date if invalid
+            }
+        });
+    </script>
+</body>
+</html>
