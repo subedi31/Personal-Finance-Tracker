@@ -45,3 +45,8 @@ body{
     #filter:hover{
         background-color: gold;
     }
+    #arrow {
+        height: 30px;
+        width: 30px;
+        padding-right: 50px;
+    }
