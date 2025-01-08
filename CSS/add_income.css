@@ -11,6 +11,7 @@
 h2{
     text-decoration: underline;
     text-align: center;
+    
 }
 
 .one {
@@ -52,8 +53,17 @@ h2{
     background-color:  goldenrod;
    }
 
+   #arrow {
+     height: 30px;
+     width: 30px;
+     padding-right: 50px;
+   }
+ 
+   table {
+    padding-left: 80px;
+   }
 
-
-
-
-
+   #customCategoryInput {
+    border: 1px solid black;
+    border-radius: 10px;
+   }
