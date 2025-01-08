@@ -1,18 +1,20 @@
 <?php
+// Start session
+session_start();
+
 // Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "personalfinance";
-
+$dbname = "personal_expenses_tracker"; 
+// Connect to the database
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-// Initialize error messages
 $errors = [];
 
 // Handle form submission
@@ -28,10 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z\s'-]+$/", $fullname)) {
         $errors[] = "Name is not valid! It must not contain numbers or special characters.";
     }
-    // validate phone_no
+
+    // Validate phone number
     if (!preg_match('/^[0-9]{10}$/', $phone_no)) {
-        $errors[] = "Phone number is not valid";
+        $errors[] = "Phone number is not valid.";
     }
+
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format.";
@@ -50,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if email already exists
     if (empty($errors)) {
-        $stmt = $conn->prepare("SELECT email FROM user WHERE email=?");
+        $stmt = $conn->prepare("SELECT email FROM users WHERE email=?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -62,11 +66,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
             // Insert data into the database
-            $stmt = $conn->prepare("INSERT INTO user (fullname, email, password, phone_no, address) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $fullname, $email, $hashed_password, $phone_no, $address );
+            $stmt = $conn->prepare("INSERT INTO users (fullname, email, password, phone_no, address) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $fullname, $email, $hashed_password, $phone_no, $address);
 
             if ($stmt->execute()) {
-                echo "Signup successful!";
+                // On successful signup, set session variables
+                $_SESSION['email'] = $email;
+                $_SESSION['user_id'] = $conn->insert_id; // Set the session user_id as the new user ID
+                header("Location: home.php");
+                exit;
             } else {
                 echo "Error: " . $stmt->error;
             }

@@ -3,6 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="CSS/sign_up.css">
+    <script>
+        function data() {
+            var regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/;
+            var regex1 = /^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            var nameRegex = /^[a-zA-Z\s]{3,}$/; 
+            var addressRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9\s,.-]{3,}$/;
+
+            
+            var nam = document.getElementById("name").value.trim();
+            var address = document.getElementById("add").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phone = document.getElementById("phone").value.trim();
+            var password = document.getElementById("pass").value;
+            var conf = document.getElementById("confpass").value;
+
+            if (nam === "" || address === "" || email === "" || phone === "" || password === "" || conf === "") {
+                alert("All the fields are mandatory");
+                return false;
+            } 
+            else if (!nameRegex.test(nam)) {
+                alert("Full Name must be at least 3 characters long and should not contain numbers.");
+                return false;
+            }
+            else if (!addressRegex.test(address)) {
+                alert("Address must be at least 3 characters long and should not contain numbers.");
+                return false;
+            }
+            else if (phone.length !== 10 || isNaN(phone)) {
+                alert("Phone number must be 10 digits and contain only numbers.");
+                return false;
+            }
+            else if (!regex1.test(email)) {
+                alert("Invalid email");
+                return false;
+            }
+            else if (!regex.test(password)) {
+                alert("Password must contain at least one uppercase letter, one number, and one special character.");
+                return false;
+            }
+            else if (password.length < 8) {
+                alert("Password must contain at least 8 characters.");
+                return false;
+            }
+            else if (password !== conf) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div id="form">
+        <form id="signup-form" action="PHP/signup.php" method="POST" onsubmit="return data();">
+            <h1>Sign Up</h1>
+
+            <div id="one">Full Name:</div>
+            <div id="one">
+                <input type="text" id="name" name="fullname" class="abc" placeholder="Enter your full name">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="one">Address:</div>
+            <div id="one">
+                <input type="text" id="add" name="address" class="abc" placeholder="Enter your address">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="one">Email:</div>
+            <div id="one">
+                <input type="email" id="email" name="email" class="abc" placeholder="Enter your email id">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="one">Phone Number:</div>
+            <div id="one">
+                <input type="tel" id="phone" name="phone_no" class="abc" placeholder="Enter your number">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="one">Password:</div>
+            <div id="one">
+                <input type="password" id="pass" name="password" class="abc" placeholder="Enter your password">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="one">Confirm Password:</div>
+            <div id="one">
+                <input type="password" id="confpass" name="confirm-password" class="abc" placeholder="Confirm your password">
+                <span class="error" style="color: red; display: none;"></span>
+            </div>
+            <br>
+
+            <div id="btn">
+                <button type="submit" class="but">Sign Up</button>
+            </div>
+            <br>
+
+            <div id="acc">
+                Already have an account? <a href="login.html">Login</a>
+            </div>
+=======
     <title>Signup - Personal Expenses Tracker</title>
     <link rel="stylesheet" href="CSS/signup.css">
 </head>

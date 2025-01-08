@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta charset="UTF-8"> <!-- Corrected 'cahrset' to 'charset' -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Corrected 'viewpoint' to 'viewport' -->
-    <title>Login</title>
-    <link rel="stylesheet" href="CSS/login.css">
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="Css/login.css">
 </head>
 <body>
     <div class="container">
-    <form id="login_form" action="PHP/login.php" method="POST" >
-        <h2> Login </h2>
-        <label for="email"><b>Email: </b></label>
-        <input type="text" placeholder="Enter Email" name="email" required> <br> <br>
-        <label for="password"><b>Password: </b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <br> <br>
-        <button type="submit">Login</button> <br>
-    </form>
-</div>
+        <form id="login" action="php/login.php" method="POST">
+            <h1> Login </h1>
+
+            <div id="username">
+                Email:
+            </div>
+            <div id="name">
+                <input type="email" class="user" name="email" placeholder="Enter your email id" required>
+            </div>
+            <br>
+
+            <div id="password">
+                Password:
+            </div>
+            <div id="word">
+                <input type="password" class="user" name="password" placeholder="Enter your password" required>
+            </div>
+            <br><br>
+
+            <div id="but">
+                <button type="submit" class="btn">Login</button>
+            </div>
+            <br>
+
+            <div id="create">
+                Don't have an Account? <a href="signup.html">Signup here</a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
